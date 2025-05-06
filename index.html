@@ -4,12 +4,17 @@
   <head>
     <meta charset="utf-8">
     <title>Bean clicker</title>
+    <style>
+      .hidden {
+        display: none;
+      }
+    </style>
   </head>
   <body>
     <p id="beansCollected">0 beans Collected</p>
     <button onclick="getBeans()">Get beans</button>
-    <button onclick="buybeansPerClick()" id="perClickUpgrade">Increase beans per click (Currently 1) Cost: 10 beans</button>
-    <button onclick="BuyGen1()" id="BuyGen1Button"> Buy a genarator that makes beans (Currently 0) Cost: 100 beans</button>
+    <button onclick="buybeansPerClick() id="perClickUpgrade" class="hidden">Increase beans per click (Currently 1) Cost: 10 beans</button>
+    <button onclick="BuyGen1()" id="BuyGen1Button" class="hidden"> Buy a genarator that makes beans (Currently 0) Cost: 100 beans</button>
     <script src="main.js" charset="utf-8" type="text/javascript"></script>
   </body>
 </html>
