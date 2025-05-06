@@ -38,8 +38,13 @@ function GenTick() {
 }
 function Unlocker() {
     if gameData.beans != gameData.previousBeans {
-        if gameData.beans >= 10 && unlocks.clickUpgrade == False [
+        if gameData.beans >= 10 && unlocks.clickUpgrade == False {
             unlocks.clickUpgrade = True
+            document.GetElementById("perClickUpgrade");
+            message.classList.remove('hidden');
+        }
+    }
+}
             
 var mainGameLoop = window.setInterval(function() {
     GenTick()
