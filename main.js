@@ -44,9 +44,8 @@ function Unlocker() {
             perClickUpgrade.classList.remove('hidden');
         }
     }
-}
-            
+}          
 var mainGameLoop = window.setInterval(function() {
-    GenTick();
+    GenTick(),
     Unlocker()
   }, 1000)
