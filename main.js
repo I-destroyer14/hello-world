@@ -40,8 +40,7 @@ function Unlocker() {
     if gameData.beans != gameData.previousBeans {
         if gameData.beans >= 10 && unlocks.clickUpgrade == False {
             unlocks.clickUpgrade = True
-            document.GetElementById("perClickUpgrade");
-            perClickUpgrade.classList.remove('hidden');
+            document.GetElementById("perClickUpgrade").classList.remove('hidden');
         }
     }
 }          
