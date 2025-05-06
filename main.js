@@ -1,12 +1,15 @@
 var gameData = {
     beans: 0,
+    previousBeans: 0,
     beansPerClick: 1,
     Upgrade1Cost: 10,
     Gen1Cost: 100,
     Gen1: 0,
     Gen1Mult: 10
     }
-
+var unlocks = {
+    boolean clickUpgrade: False
+}
 function getBeans() {
     gameData.beans += gameData.beansPerClick
     document.getElementById("beansCollected").innerHTML = gameData.beans + " beans collected"
@@ -33,6 +36,14 @@ function GenTick() {
   gameData.beans += gameData.Gen1 * gameData.Gen1Mult
   document.getElementById("beansCollected").innerHTML = gameData.beans + " beans collected"
 }
+function Unlocker() {
+    if gameData.beans != gameData.previousBeans {
+        if gameData.beans >= 10 && unlocks.clickUpgrade == False [
+            unlocks.clickUpgrade = True
+            
 var mainGameLoop = window.setInterval(function() {
     GenTick()
   }, 1000)
+var checkPrices = window.setInterval(function() {
+    Unlocker()
+}, 25)
