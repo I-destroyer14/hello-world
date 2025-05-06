@@ -37,9 +37,9 @@ function GenTick() {
   document.getElementById("beansCollected").innerHTML = gameData.beans + " beans collected"
 }
 function Unlocker() {
-    if gameData.beans !== gameData.previousBeans {
+    if (gameData.beans != gameData.previousBeans) {
         gameData.previousBeans = gameData.beans
-        if gameData.beans >= 10 && !unlocks.clickUpgrade{
+        if (gameData.beans >= 10 && !unlocks.clickUpgrade) {
             unlocks.clickUpgrade = True
             document.GetElementById("perClickUpgrade").classList.remove('hidden');
         }
