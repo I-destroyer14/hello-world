@@ -46,6 +46,5 @@ function Unlocker() {
     }
 }          
 var mainGameLoop = window.setInterval(function() {
-    GenTick(),
-    Unlocker()
+    GenTick()
   }, 1000)
