@@ -47,8 +47,6 @@ function Unlocker() {
 }
             
 var mainGameLoop = window.setInterval(function() {
-    GenTick()
-  }, 1000)
-var checkPrices = window.setInterval(function() {
+    GenTick();
     Unlocker()
-}, 25)
+  }, 1000)
