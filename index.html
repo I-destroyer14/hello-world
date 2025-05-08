@@ -22,6 +22,30 @@
       .generators{
         display: grid; grid-template-columns: max-content auto; gap: 10px 50px
       }
+      .falling-image{
+       position: absolute; /* Allows precise positioning */
+       top: -100px; /* Start above the viewport */
+       left: 50%; /* Center horizontally */
+       transform: translateX(-50%); /* Center the image precisely */
+       width: 200px; /* Adjust as needed */
+       height: auto;
+       opacity: 0; /* Initially invisible */
+       animation: fadeInAndFall 2s ease-out; /* Apply the animation */
+      }
+      @keyframes fadeInAndFall {
+       0% {
+           top: -100px; /* Start above the viewport */
+           opacity: 0; /* Initially invisible */
+       }
+       50% {
+           top: 50%; /* Fall to the middle of the viewport */
+           opacity: 0.5; /* Partially visible */
+       }
+       100% {
+           top: 50%; /* Stay at the middle of the viewport */
+           opacity: 1; /* Fully visible */
+       }
+      }
     </style>
   </head>
   <body style="background-color: #ffffff">
@@ -35,7 +59,7 @@
     </div>
     <div id="Shop" class="shop hidden">
       <h4 id="Motivation" class="hidden">Unlock something at 10000 beans...</h4>
-        <pre id="BEAN" class="hidden">
+        <pre id="BEAN" style="left: 50%"class="hidden">
                       ,ggggg,           
                     y@$$$$$$$$@g        
                    @$$$$$$$$$$$$$g      
