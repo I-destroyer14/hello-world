@@ -8,13 +8,53 @@
       .hidden {
         display: none;
       }
+      .button1 {
+        background-color: rgb(184, 112, 19); color: white;
+      }
+      .genbutton {
+        background-color: black; color: white; width: 150px;
+      }
+      .shop{
+        position: absolute; top: 150px; left: 900px; width: 650px; height: 750px; background-color:#c49562; border: 2px solid lightgray
+      }
+      .genText{
+        color: rgb(5, 56, 5); margin: 0
+      }
+      .generators{
+        display: grid; grid-template-columns: max-content auto; gap: 10px 50px
+      }
     </style>
   </head>
-  <body>
-    <p id="beansCollected">0 beans Collected</p>
-    <button onclick="getBeans()">Get beans</button>
-    <button onclick="buybeansPerClick()" id="perClickUpgrade" class="hidden">Increase beans per click (Currently 1) Cost: 10 beans</button>
-    <button onclick="BuyGen1()" id="BuyGen1Button" class="hidden"> Buy a genarator that makes beans (Currently 0) Cost: 100 beans</button>
+  <body style="background-color: #ffffff">
+    <hr>
+    <h1 id="beansCollected">0 beans collected</h1>
+    <button onclick="getBeans()">Get beans</button><br><br>
+    <button onclick="buybeansPerClick()" id="perClickUpgrade" class ="hidden button1">Increase beans per click (Currently 1) Cost: 10 beans</button> <hr class ="hidden"> <br><br><br>
+    <div class="generators">
+    <p class="genText hidden" id="Gen1">Bean Generators: 0</p><button onclick="BuyGen1()" title= "Buy a genarator that makes beans." id="BuyGen1Button" class ="hidden genbutton"> Cost: 100 beans</button>
+    <p class="genText hidden" id="Gen2">Bean Factories: 0 </p><button onclick="BuyGen2()" title= "Buy a factory that produces generators." id="BuyGen2Button" class ="genbutton hidden"> Cost: 1000</button>
+    </div>
+    <div id="Shop" class="shop hidden">
+      <h4 id="Motivation" class="hidden">Unlock something at 10000 beans...</h4>
+        <pre id="BEAN" class="hidden">
+                      ,ggggg,           
+                    y@$$$$$$$$@g        
+                   @$$$$$$$$$$$$$g      
+                 g@@$$$$$$$$$$$$$$@     
+              ,g$@C $$$$$$$$$$$$$$$r    
+           ,g@$P" ,@$$$$$$$$$$$$$$$@    
+        g@@$$gggg@$$$$$$$$$$$$$$$$$F    
+      @$$$$$$$$$$$$$$$$$$$$$$$$$$$$     
+     @$$$$$$$$$$$$$$$$$$$$$$$$$$$$F     
+    ]$$$$$$$$$$$$$$$$$$$$$$$$$$$$C      
+    ]$$$$$$$$$$$$$$$$$$$$$$$$$$@`       
+     $$$$$$$$$$$$$$$$$$$$$$$$@"         
+      ]$$$$$$$$$$$$$$$$$$$$R"           
+        "B$$$$$$$$$$$$$@P`              
+            7"""*"*"-    
+        </pre>
+      <button> Test</button>
+    </div>
     <script src="main.js" charset="utf-8" type="text/javascript"></script>
   </body>
 </html>
