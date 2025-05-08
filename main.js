@@ -5,9 +5,11 @@ var gameData = {
     Upgrade1Cost: 10,
     Gen1Cost: 100,
     Gen1: 0,
+    SelfBought1: 0,
     Gen1Mult: 10,
     Gen2Cost: 1000,
     Gen2: 0,
+    SelfBought2: 0,
     Gen2Mult: 1,
     }
 var unlocks = {
@@ -78,10 +80,12 @@ function unlock() {
     if (gameData.beans >= 100 && !unlocks.Gen1Buy){
       document.getElementById("BuyGen1Button").classList.remove('hidden')
       document.getElementById("Gen1").classList.remove('hidden')
+      unlocks.Gen1Buy = true
     }
-    if (gameData.beans >= 1000 && !unlocks.Gen2Buy){
+    if (gameData.beans >= 500 && !unlocks.Gen2Buy){
       document.getElementById("BuyGen2Button").classList.remove('hidden')
       document.getElementById("Gen2").classList.remove('hidden')
+      unlocks.Gen2Buy = True
     }
     if (gameData.beans >= 3000 && !unlocks.Shop){
       unlocks.Shop = true
