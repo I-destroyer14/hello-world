@@ -14,7 +14,7 @@
         background-color: black; color: white; width: 150px;
       }
       .shop{
-        position: absolute; top: 150px; left: 900px; width: 650px; height: 750px; background-color:#c49562; border: 2px solid lightgray
+        position: absolute; top: 150px; left: 900px; width: 650px; height: 500px; background-color:#c49562; border: 2px solid lightgray
       }
       .genText{
         color: rgb(5, 56, 5); margin: 0
@@ -22,36 +22,35 @@
       .generators{
         display: grid; grid-template-columns: max-content auto; gap: 10px 50px
       }
+      .ascii-bean {
+      display: inline-block; font-family: monospace; text-align: left; white-space: pre;
+      }
       .falling-image{
-       position: absolute; /* Allows precise positioning */
-       top: -100px; /* Start above the viewport */
-       left: 50%; /* Center horizontally */
-       transform: translateX(-50%); /* Center the image precisely */
-       width: 200px; /* Adjust as needed */
+       position: absolute;
+       top: -200px;
+       transform: translateX(-50%);
+       width: 200px;
        height: auto;
-       opacity: 0; /* Initially invisible */
-       animation: fadeInAndFall 2s ease-out; /* Apply the animation */
+       opacity: 1; /* Initially invisible */
+       animation: fadeInAndFall 3s ease-out; /* Apply the animation */
+       z-index: -1;
       }
       @keyframes fadeInAndFall {
        0% {
-           top: -100px; /* Start above the viewport */
-           opacity: 0; /* Initially invisible */
-       }
-       50% {
-           top: 50%; /* Fall to the middle of the viewport */
-           opacity: 0.5; /* Partially visible */
+           top: -200px; /* Start above the viewport */
+           opacity: 1; /* Initially invisible */
        }
        100% {
-           top: 50%; /* Stay at the middle of the viewport */
-           opacity: 1; /* Fully visible */
+           top: 65%; /* Fall to the middle of the viewport */
+           opacity: 0; /* Partially visible */
        }
       }
     </style>
   </head>
-  <body style="background-color: #ffffff">
+  <body style="background-color: #8c683b">
     <hr>
     <h1 id="beansCollected">0 beans collected</h1>
-    <button onclick="getBeans()">Get beans</button><br><br>
+    <button onclick="clickButton()">Get beans</button><br><br>
     <button onclick="buybeansPerClick()" id="perClickUpgrade" class ="hidden button1">Increase beans per click (Currently 1) Cost: 10 beans</button> <hr class ="hidden"> <br><br><br>
     <div class="generators">
     <p class="genText hidden" id="Gen1">Bean Generators: 0</p><button onclick="BuyGen1()" title= "Buy a genarator that makes beans." id="BuyGen1Button" class ="hidden genbutton"> Cost: 100 beans</button>
@@ -59,7 +58,7 @@
     </div>
     <div id="Shop" class="shop hidden">
       <h4 id="Motivation" class="hidden">Unlock something at 10000 beans...</h4>
-        <pre id="BEAN" style="left: 50%"class="hidden">
+        <pre id="BEAN"class="hidden center-image">
                       ,ggggg,           
                     y@$$$$$$$$@g        
                    @$$$$$$$$$$$$$g      
@@ -76,6 +75,7 @@
         "B$$$$$$$$$$$$$@P`              
             7"""*"*"-    
         </pre>
+      <hr>
       <button> Test</button>
     </div>
     <script src="main.js" charset="utf-8" type="text/javascript"></script>
