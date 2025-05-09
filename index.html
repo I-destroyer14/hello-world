@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Bean Clicker</title>
+    <title>Bean clicker</title>
     <style>
       .hidden {
         display: none;
@@ -11,19 +11,25 @@
         background-color: rgb(184, 112, 19); color: white;
       }
       .genbutton {
-        background-color: black; color: white; width: 150px;
+      background-color: black; color: white; width: 150px;
       }
       .shop{
-        position: absolute; top: 150px; left: 900px; width: 650px; height: 500px; background-color:#c49562; border: 2px solid lightgray
+      position: absolute; top: 150px; left: 900px; width: 650px; height: 500px; background-color:#c69a6c; border: 2px solid lightgray
       }
       .genText{
-        color: rgb(5, 56, 5); margin: 0
+      color: rgb(5, 56, 5); margin: 0
       }
       .generators{
-        display: grid; grid-template-columns: max-content auto; gap: 10px 50px
+      display: grid; grid-template-columns: max-content auto; gap: 10px 50px
       }
       .ascii-bean {
       display: inline-block; font-family: monospace; text-align: left; white-space: pre;
+      }
+      .upgrade{
+        padding: 5px; display: inline-block; text-align:center; height: 100px; width: 225px; border: 1px solid lightgray; background-color: rgb(175, 107, 11) 
+      }
+      .upgrade-container{
+        display: flex; justify-content: center; gap: 40px; margin: top 20px;
       }
       .falling-image{
        position: absolute;
@@ -50,6 +56,7 @@
   <body style="background-color: #8c683b">
     <hr>
     <h1 id="beansCollected">0 beans collected</h1>
+    <p id="b/s" class="hidden"><strong>0 beans per second</strong></p>
     <button onclick="clickButton()">Get beans</button><br><br>
     <button onclick="buybeansPerClick()" id="perClickUpgrade" class ="hidden button1">Increase beans per click (Currently 1) Cost: 10 beans</button> <hr class ="hidden"> <br><br><br>
     <div class="generators">
@@ -76,7 +83,10 @@
             7"""*"*"-    
         </pre>
       <hr>
-      <button> Test</button>
+      <div class="upgrade-container">
+        <button onclick="BuyUpgrade1()" id="shopUpgrade1" class="upgrade hidden">Double Production of beans <br><br><strong>Cost: 10000</strong></button>
+        <button class="upgrade">Test</button>
+      </div>
     </div>
     <script src="main.js" charset="utf-8" type="text/javascript"></script>
   </body>
