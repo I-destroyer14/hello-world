@@ -1,8 +1,15 @@
 var gameData = {
-  beans: 0,
+  beans: 10000,
+  beansPerSecond: 0,
   previousBeans: 0,
   beansPerClick: 1,
+  }
+var upgrades = {
   Upgrade1Cost: 10,
+  ShopUpgrade1Cost: 10000,
+  shopUpgrade1: 0
+}
+var generators = {
   Gen1Cost: 100,
   Gen1: 0,
   SelfBought1: 0,
@@ -11,8 +18,9 @@ var gameData = {
   Gen2: 0,
   SelfBought2: 0,
   Gen2Mult: 1,
-  }
+}
 var unlocks = {
+  beans: false,
   ClickUpgrade1: false,
   Gen1Buy: false,
   Gen2Buy: false,
@@ -20,8 +28,8 @@ var unlocks = {
   Shop: false,
   Upgrades: false
 }
-function genCalc(gen) {
-
+function beansASecond() {
+  return (generators.Gen1 * generators.Gen1Mult) * 2 ** upgrades.shopUpgrade1
 }
 function formatNumber(num) {
 if (num%1 == 0) {
@@ -44,40 +52,57 @@ function clickButton() {
   }, 3000);
   }
 function buybeansPerClick() {
-  if (gameData.beans >= gameData.Upgrade1Cost) {
-    gameData.beans -= gameData.Upgrade1Cost
+  if (gameData.beans >= upgrades.Upgrade1Cost) {
+    gameData.beans -= upgrades.Upgrade1Cost
     gameData.beansPerClick += 1
-    gameData.Upgrade1Cost *= 2
+    upgrades.Upgrade1Cost *= 2
     document.getElementById("beansCollected").innerHTML = formatNumber(gameData.beans) + " Beans Collected"
-    document.getElementById("perClickUpgrade").innerHTML = "Increase beans per click (Currently " + gameData.beansPerClick + ") Cost: " + formatNumber(gameData.Upgrade1Cost)
+    document.getElementById("perClickUpgrade").innerHTML = "Increase beans per click (Currently " + gameData.beansPerClick + ") Cost: " + formatNumber(upgrades.Upgrade1Cost)
   }
 }
 function BuyGen1() {
-if (gameData.beans >= gameData.Gen1Cost) {
-  gameData.beans -= gameData.Gen1Cost
-  gameData.Gen1 += 1
-  gameData.Gen1Cost += 10
+if (gameData.beans >= generators.Gen1Cost) {
+  gameData.beans -= generators.Gen1Cost
+  generators.Gen1 += 1
+  generators.Gen1Cost += 10
   document.getElementById("beansCollected").innerHTML = formatNumber(gameData.beans) + " Beans Collected"
-  document.getElementById("BuyGen1Button").innerHTML = "Cost: " + formatNumber(gameData.Gen1Cost) + " beans"
-  document.getElementById("Gen1").innerHTML = "Bean Generators: " + formatNumber(gameData.Gen1)
+  document.getElementById("BuyGen1Button").innerHTML = "Cost: " + formatNumber(generators.Gen1Cost) + " beans"
+  document.getElementById("Gen1").innerHTML = "Bean Generators: " + formatNumber(generators.Gen1)
+  if (!unlocks.beans) {
+  document.getElementById("b/s").classList.remove('hidden')
+  unlocks.beans=true
+  }
 }
 }
 function BuyGen2() {
-if (gameData.beans >= gameData.Gen2Cost) {
-  gameData.beans -= gameData.Gen2Cost
-  gameData.Gen2 += 1
-  gameData.Gen2Cost *= 1.75
+if (gameData.beans >= generators.Gen2Cost) {
+  gameData.beans -= generators.Gen2Cost
+  generators.Gen2 += 1
+  generators.Gen2Cost *= 1.75
   document.getElementById("beansCollected").innerHTML = formatNumber(gameData.beans) + " Beans Collected"
-  document.getElementById("BuyGen2Button").innerHTML = "Cost: " + formatNumber(gameData.Gen2Cost) + " beans"
-  document.getElementById("Gen2").innerHTML = "Bean Factories: " + formatNumber(gameData.Gen2)
+  document.getElementById("BuyGen2Button").innerHTML = "Cost: " + formatNumber(generators.Gen2Cost) + " beans"
+  document.getElementById("Gen2").innerHTML = "Bean Factories: " + formatNumber(generators.Gen2)
+}
+}
+function BuyUpgrade1() {
+if (gameData.beans >= upgrades.ShopUpgrade1Cost) {
+  gameData.beans -= upgrades.ShopUpgrade1Cost
+  upgrades.shopUpgrade1 += 1
+  upgrades.ShopUpgrade1Cost *= 10
+  document.getElementById("shopUpgrade1").innerHTML = "Double Production of beans <br><br><strong> Cost: " + formatNumber(upgrades.ShopUpgrade1Cost)
+  document.getElementById("beansCollected").innerHTML = formatNumber(gameData.beans) + " Beans Collected"
 }
 }
 function GenTick() {
-gameData.beans += gameData.Gen1 * gameData.Gen1Mult / 10
-gameData.Gen1 += gameData.Gen2 * gameData.Gen2Mult / 10
-document.getElementById("beansCollected").innerHTML = formatNumber(gameData.beans) + " beans collected"
-document.getElementById("Gen1").innerHTML = "Bean Generators: " + formatNumber(gameData.Gen1)
-document.getElementById("Gen2").innerHTML = "Bean Factories: " + formatNumber(gameData.Gen2)
+gameData.beansPerSecond = beansASecond()
+gameData.beans += beansASecond() / 10
+generators.Gen1 += generators.Gen2 * generators.Gen2Mult / 10
+document.getElementById("beansCollected").innerHTML = formatNumber(gameData.beans) + " Beans collected"
+document.getElementById("Gen1").innerHTML = "Bean Generators: " + formatNumber(generators.Gen1)
+document.getElementById("Gen2").innerHTML = "Bean Factories: " + formatNumber(generators.Gen2)
+if (unlocks.beans) {
+  document.getElementById("b/s").innerHTML = formatNumber(gameData.beansPerSecond) + " beans per second"
+}
 }
 function unlock() {
 if (gameData.beans != gameData.previousBeans) {
