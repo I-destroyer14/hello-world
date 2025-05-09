@@ -1,5 +1,5 @@
 var gameData = {
-  beans: 10000,
+  beans: 0,
   beansPerSecond: 0,
   previousBeans: 0,
   beansPerClick: 1,
