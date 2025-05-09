@@ -14,7 +14,7 @@
       background-color: black; color: white; width: 150px;
       }
       .shop{
-      position: absolute; top: 150px; left: 900px; width: 650px; height: 500px; background-color:#c69a6c; border: 2px solid lightgray
+      position: absolute; top: 150px; left: 75%; width: 650px; height: 500px; background-color:#c69a6c; border: 2px solid lightgray
       }
       .genText{
       color: rgb(5, 56, 5); margin: 0
@@ -65,6 +65,9 @@
     </div>
     <div id="Shop" class="shop hidden">
       <h4 id="Motivation" class="hidden">Unlock something at 10000 beans...</h4>
+      <table>
+      <tr>
+        <td>
         <pre id="BEAN"class="hidden center-image">
                       ,ggggg,           
                     y@$$$$$$$$@g        
@@ -82,6 +85,14 @@
         "B$$$$$$$$$$$$$@P`              
             7"""*"*"-    
         </pre>
+        </td>
+        <td>
+          <button class= "upgrade">Unlock the next shop upgrade <br><br> Cost:1e6 </button>
+          <button class= "upgrade">Unlock the next shop upgrade <br><br> Cost:1e10</button>
+          <button class= "upgrade">Unlock the next shop upgrade <br><br> Cost:1e20</button>
+        </td>
+      </tr>
+      </table>
       <hr>
       <div id="upgradeContainer" class="hidden">
         <button onclick="BuyUpgrade1()" id="shopUpgrade1" class="upgrade hidden">Double bean production <br><br><strong>Cost: 10000</strong></button>
