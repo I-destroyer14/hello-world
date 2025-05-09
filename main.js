@@ -1,5 +1,5 @@
 var gameData = {
-  beans: 0,
+  beans: 10000000,
   beansPerSecond: 0,
   previousBeans: 0,
   beansPerClick: 1,
@@ -33,9 +33,9 @@ function beansASecond() {
 }
 function formatNumber(num) {
 if (num%1 == 0) {
-  return num >= 1e9 ? num.toExponential(2) : num
+  return num >= 1e6 ? num.toExponential(2) : num
 }else {
-  return num >= 1e9 ? num.toExponential(2) : num.toFixed(2);
+  return num >= 1e6 ? num.toExponential(2) : num.toFixed(2);
 }
 }
 function clickButton() {
@@ -89,7 +89,7 @@ if (gameData.beans >= upgrades.ShopUpgrade1Cost) {
   gameData.beans -= upgrades.ShopUpgrade1Cost
   upgrades.shopUpgrade1 += 1
   upgrades.ShopUpgrade1Cost *= 10
-  document.getElementById("shopUpgrade1").innerHTML = "Double bean Production <br><br><strong> Cost: " + formatNumber(upgrades.ShopUpgrade1Cost)
+  document.getElementById("shopUpgrade1").innerHTML = "Double bean Production <br><br><br><strong> Cost: " + formatNumber(upgrades.ShopUpgrade1Cost)
   document.getElementById("beansCollected").innerHTML = formatNumber(gameData.beans) + " Beans Collected"
 }
 }
