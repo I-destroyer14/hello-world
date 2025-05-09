@@ -14,7 +14,7 @@
       background-color: black; color: white; width: 150px;
       }
       .shop{
-      position: absolute; top: 150px; left: 75%; width: 650px; height: 500px; background-color:#c69a6c; border: 2px solid lightgray
+      position: absolute; top: 150px; left: 75%; width: 650px; height: 550px; background-color:#c69a6c; border: 2px solid lightgray
       }
       .genText{
       color: rgb(5, 56, 5); margin: 0
@@ -27,6 +27,9 @@
       }
       .upgrade{
         padding: 5px; display: inline-block; text-align:center; height: 100px; width: 225px; border: 1px solid lightgray; background-color: rgb(175, 107, 11) 
+      }
+      .Once-upgrade{
+        position: relative; left: 28px; padding: 5px; display: inline-block; text-align:center; height: 100px; width: 225px; border: 1px solid lightgray; background-color: rgb(175, 107, 11)
       }
       .upgrade-container{
         display: flex; justify-content: center; gap: 40px; margin: top 20px;
@@ -55,7 +58,7 @@
   </head>
   <body style="background-color: #8c683b">
     <hr>
-    <h1 id="beansCollected">0 beans collected</h1>
+    <h1 id="beansCollected">0 Beans collected</h1>
     <p id="b/s" class="hidden"><strong>0 beans per second</strong></p>
     <button onclick="clickButton()">Get beans</button><br><br>
     <button onclick="buybeansPerClick()" id="perClickUpgrade" class ="hidden button1">Increase beans per click (Currently 1) Cost: 10 beans</button> <hr class ="hidden"> <br><br><br>
@@ -87,16 +90,23 @@
         </pre>
         </td>
         <td>
-          <button class= "upgrade">Unlock the next shop upgrade <br><br> Cost:1e6 </button>
-          <button class= "upgrade">Unlock the next shop upgrade <br><br> Cost:1e10</button>
-          <button class= "upgrade">Unlock the next shop upgrade <br><br> Cost:1e20</button>
+          <button class= "Once-upgrade">Unlock the next shop upgrade <br><br><br> <strong>Cost:1e+6</strong> </button>
+          <button class= "Once-upgrade">Unlock the next shop upgrade <br><br><br> <strong>Cost:1e+10</strong></button>
+          <button class= "Once-upgrade">Unlock the <important>FINAL</important> shop upgrade <br><br><br> <strong>Cost:1e+20</strong></button>
         </td>
       </tr>
       </table>
       <hr>
+      <div>
       <div id="upgradeContainer" class="hidden">
-        <button onclick="BuyUpgrade1()" id="shopUpgrade1" class="upgrade hidden">Double bean production <br><br><strong>Cost: 10000</strong></button>
+        <button onclick="BuyUpgrade1()" id="shopUpgrade1" class="upgrade hidden">Double bean production <br><br><br><strong>Cost: 10000</strong></button>
+        <button class="upgrade">Unlock Next building <br><br><br> <strong>Cost: 1e+6</strong> </button>
+      </div>
+      <br>
+      <div id="upgradeContainer2" class="upgrade-container">
+        <button class="upgrade">Unlock Jelly Beans <br> (Every click advances buildings .1 seconds)<br><br> <strong>Cost: 1e+10</strong </button>
         <button class="upgrade">Test</button>
+      </div>
       </div>
     </div>
     <script src="main.js" charset="utf-8" type="text/javascript"></script>
