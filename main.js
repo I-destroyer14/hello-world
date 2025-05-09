@@ -40,7 +40,7 @@ if (num%1 == 0) {
 }
 function clickButton() {
   gameData.beans += gameData.beansPerClick
-  document.getElementById("beansCollected").innerHTML = formatNumber(gameData.beans) + " beans collected"
+  document.getElementById("beansCollected").innerHTML = formatNumber(gameData.beans) + " Beans collected"
   const bean = document.createElement('img');
   bean.src = 'bean.jpg';
   bean.className = 'falling-image';
@@ -89,13 +89,13 @@ if (gameData.beans >= upgrades.ShopUpgrade1Cost) {
   gameData.beans -= upgrades.ShopUpgrade1Cost
   upgrades.shopUpgrade1 += 1
   upgrades.ShopUpgrade1Cost *= 10
-  document.getElementById("shopUpgrade1").innerHTML = "Double Production of beans <br><br><strong> Cost: " + formatNumber(upgrades.ShopUpgrade1Cost)
+  document.getElementById("shopUpgrade1").innerHTML = "Double bean Production <br><br><strong> Cost: " + formatNumber(upgrades.ShopUpgrade1Cost)
   document.getElementById("beansCollected").innerHTML = formatNumber(gameData.beans) + " Beans Collected"
 }
 }
 function GenTick() {
 gameData.beansPerSecond = beansASecond()
-gameData.beans += beansASecond() / 10
+gameData.beans += gameData.beansPerSecond / 10
 generators.Gen1 += generators.Gen2 * generators.Gen2Mult / 10
 document.getElementById("beansCollected").innerHTML = formatNumber(gameData.beans) + " Beans collected"
 document.getElementById("Gen1").innerHTML = "Bean Generators: " + formatNumber(generators.Gen1)
@@ -129,6 +129,8 @@ if (gameData.beans != gameData.previousBeans) {
   if (gameData.beans >= 10000 && !unlocks.Upgrades) {
     document.getElementById("Motivation").classList.add('hidden')
     document.getElementById("BEAN").classList.remove('hidden')
+    document.getElementById("upgradeContainer").classList.remove('hidden')
+    document.getElementById("upgradeContainer").classList.add('upgrade-container')
     unlocks.Upgrades = true
   }
 }
