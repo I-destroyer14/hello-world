@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -14,7 +15,7 @@
       background-color: black; color: white; width: 150px;
       }
       .shop{
-      position: absolute; top: 150px; left: 75%; width: 650px; height: 550px; background-color:#c69a6c; border: 2px solid lightgray
+      position: absolute; top: 150px; left: 60%; width: 650px; height: 550px; background-color:#c69a6c; border: 2px solid lightgray
       }
       .genText{
       color: rgb(5, 56, 5); margin: 0
@@ -30,6 +31,9 @@
       }
       .Once-upgrade{
         position: relative; left: 28px; padding: 5px; display: inline-block; text-align:center; height: 100px; width: 225px; border: 1px solid lightgray; background-color: rgb(175, 107, 11)
+      }
+      .bought{
+        opacity: 50%
       }
       .upgrade-container{
         display: flex; justify-content: center; gap: 40px; margin: top 20px;
@@ -62,9 +66,16 @@
     <p id="b/s" class="hidden"><strong>0 beans per second</strong></p>
     <button onclick="clickButton()">Get beans</button><br><br>
     <button onclick="buybeansPerClick()" id="perClickUpgrade" class ="hidden button1">Increase beans per click (Currently 1) Cost: 10 beans</button> <hr class ="hidden"> <br><br><br>
+    <div id="Reset-Container" class="hidden"><button onclick= "beanstiege()" id="beanReset" class="upgrade">Perform a Beinstiege<br>(Reset all buildings and beans but get) <br> <b> x1 ALL BUILDINGS</b></button>
+    <br><br><br></div>
     <div class="generators">
     <p class="genText hidden" id="Gen1">Bean Generators: 0</p><button onclick="BuyGen1()" title= "Buy a genarator that makes beans." id="BuyGen1Button" class ="hidden genbutton"> Cost: 100 beans</button>
-    <p class="genText hidden" id="Gen2">Bean Factories: 0 </p><button onclick="BuyGen2()" title= "Buy a factory that produces generators." id="BuyGen2Button" class ="genbutton hidden"> Cost: 1000</button>
+    <p class="genText hidden" id="Gen2">Bean Machines: 0 </p><button onclick="BuyGen2()" title= "Buy a machine that produces generators." id="BuyGen2Button" class ="genbutton hidden"> Cost: 1000</button>
+    <p class="genText hidden" id="Gen3">Bean Factories: 0 </p><button onclick="BuyGen3()" title= "Buy a factory that produces machines." id="BuyGen3Button" class ="genbutton hidden"> Cost: 100000</button>
+    <p class="genText hidden" id="Gen4">Bean Companies: 0 </p><button onclick="BuyGen4()" title= "Buy a Bean CO. that produces machines." id="BuyGen4Button" class ="genbutton hidden"> Cost: 1e+9</button>
+    <p class="genText hidden" id="Gen5">Bean Cities: 0 </p><button onclick="BuyGen5()" title= "Buy a city that produces companies." id="BuyGen5Button" class ="genbutton hidden"> Cost: 1e+16</button>
+    <p class="genText hidden" id="Gen6">Bean Countries: 0 </p><button onclick="BuyGen6()" title= "Buy a Country that produces Cities." id="BuyGen6Button" class ="genbutton hidden"> Cost: 1e+30</button>
+    <p class="genText hidden" id="Gen7">Bean Planets: 0 </p><button onclick="BuyGen7()" title= "Buy a planet that produces Countries." id="BuyGen7Button" class ="genbutton hidden"> Cost: 1e+50</button>
     </div>
     <div id="Shop" class="shop hidden">
       <h4 id="Motivation" class="hidden">Unlock something at 10000 beans...</h4>
@@ -90,22 +101,22 @@
         </pre>
         </td>
         <td>
-          <button class= "Once-upgrade">Unlock the next shop upgrade <br><br><br> <strong>Cost:1e+6</strong> </button>
-          <button class= "Once-upgrade">Unlock the next shop upgrade <br><br><br> <strong>Cost:1e+10</strong></button>
-          <button class= "Once-upgrade">Unlock the <important>FINAL</important> shop upgrade <br><br><br> <strong>Cost:1e+20</strong></button>
+          <button onclick="unlockShop(1)" id="Unlock1" class= "hidden">Unlock the next shop upgrade <br><br><br> <strong>Cost:1e+6</strong> </button>
+          <button onclick="unlockShop(2)" id="Unlock2" class= "hidden">Unlock the next shop upgrade <br><br><br> <strong>Cost:1e+10</strong></button>
+          <button onclick="unlockShop(3)" id="Unlock3" class= "hidden">Unlock the <important>FINAL</important> shop upgrade <br><br><br> <strong>Cost:1e+25</strong></button>
         </td>
       </tr>
       </table>
       <hr>
       <div>
       <div id="upgradeContainer" class="hidden">
-        <button onclick="BuyUpgrade1()" id="shopUpgrade1" class="upgrade hidden">Double bean production <br><br><br><strong>Cost: 10000</strong></button>
-        <button class="upgrade">Unlock Next building <br><br><br> <strong>Cost: 1e+6</strong> </button>
+        <button onclick="BuyUpgrade1()" id="shopUpgrade1" class="upgrade">Double bean production <br><br><br><strong>Cost: 10000</strong></button>
+        <button onclick="BuyUpgrade2()" id="shopUpgrade2" class="hidden">Unlock Next building <br><br><br> <strong>Cost: 100000</strong></button>
       </div>
       <br>
       <div id="upgradeContainer2" class="upgrade-container">
-        <button class="upgrade">Unlock Jelly Beans <br> (Every click advances buildings .1 seconds)<br><br> <strong>Cost: 1e+10</strong </button>
-        <button class="upgrade">Test</button>
+        <button onclick="BuyUpgrade3()" id="shopUpgrade3" class="hidden">Unlock Jelly Beans <br> (Every click advances buildings .1 seconds)<br><br> <strong>Cost: 1e+12</strong> </button>
+        <button onclick="BuyUpgrade4()" id="shopUpgrade4" class="hidden">Increase all buildings by +100%<br><br><br><strong>Cost: 1e+25</strong></button>
       </div>
       </div>
     </div>
